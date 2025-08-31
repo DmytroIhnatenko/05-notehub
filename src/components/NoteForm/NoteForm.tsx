@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage as FMError } from "formik";
 import * as Yup from "yup";
 import css from "./NoteForm.module.css";
-import type { CreateNoteDto } from "../../services/noteServices"; 
+import type { CreateNoteDto } from "../../services/noteService"; 
 
 const TAGS = ["Todo","Work","Personal","Meeting","Shopping"] as const;
 export type Tag = typeof TAGS[number];
