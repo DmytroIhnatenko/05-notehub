@@ -1,0 +1,29 @@
+.wrapper {
+  text-align: center;
+  padding: 20px;
+}
+
+ 
+.ring {
+  display: inline-block;
+  width: var(--size, 48px);
+  height: var(--size, 48px);
+  color: var(--color, #3b82f6); 
+}
+
+.ring::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 4px solid currentColor;
+  border-color: currentColor transparent currentColor transparent;
+  border-radius: 50%;
+  animation: ring-spin 1.2s linear infinite;
+}
+
+@keyframes ring-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
