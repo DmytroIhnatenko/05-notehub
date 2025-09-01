@@ -1,3 +1,4 @@
+// src/components/NoteList/NoteList.tsx
 import React, { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { Note } from "../../types/note";
@@ -14,16 +15,11 @@ const NoteList: React.FC<NoteListProps> = ({ items }) => {
 
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: (id: string) => deleteNote(id),
-    onMutate: (id) => {
-      setDeletingId(id);
-    },
+    onMutate: (id) => setDeletingId(id),
     onSuccess: () => {
-      // после удаления перезапрашиваем список
       qc.invalidateQueries({ queryKey: ["notes"] });
     },
-    onSettled: () => {
-      setDeletingId(null);
-    },
+    onSettled: () => setDeletingId(null),
   });
 
   if (!items.length) return null;
@@ -33,7 +29,12 @@ const NoteList: React.FC<NoteListProps> = ({ items }) => {
       {items.map((n) => (
         <li key={n.id} className={css.listItem}>
           <h2 className={css.title}>{n.title}</h2>
-          {n.content && <p className={css.content}>{n.content}</p>}
+
+         
+          <p className={css.content}>
+            {n.content }
+          </p>
+
           <div className={css.footer}>
             <span className={css.tag}>{n.tag}</span>
             <button
@@ -46,6 +47,7 @@ const NoteList: React.FC<NoteListProps> = ({ items }) => {
           </div>
         </li>
       ))}
+
       {isError && (
         <li className={css.listItem}>
           <div className={css.error}>
