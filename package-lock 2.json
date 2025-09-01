@@ -4,7 +4,7 @@
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
-    "": {
+    "": { 
       "name": "my-react-project",
       "version": "0.0.0",
       "dependencies": {
